@@ -17,9 +17,9 @@ class Registro extends Model
         //Máximo valores permitidos para realizar el procesamiento. Podemos más pero para hacerlo seguro lo dejamos así.
         $limiteParametros = 2000; 
 
-        if (count($idsArray) > $limiteParametros) {
-            $consulta->where(function ($subConsulta) use ($idsArray, $limiteParametros) {
-                foreach (array_chunk($idsArray, $limiteParametros) as $bloqueIds) {
+        if (count($idsValor) > $limiteParametros) {
+            $consulta->where(function ($subConsulta) use ($idsValor, $limiteParametros) {
+                foreach (array_chunk($idsValor, $limiteParametros) as $bloqueIds) {
                     $subConsulta->orWhereIn('id', $bloqueIds);
                 }
             });
@@ -27,6 +27,6 @@ class Registro extends Model
             return $consulta;
         }
 
-        return $consulta->whereIn('id', $idsArray);
+        return $consulta->whereIn('id', $idsValor);
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\View\View;
 class CocheController extends Controller
 {
     //Función del ejercicio con problemas N+1
-    public function index() {
+    public function indexEjercicio() {
         $coches = Coche::all();
         
         foreach ($coches as $coche) {
